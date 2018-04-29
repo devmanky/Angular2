@@ -1,0 +1,39 @@
+<div class="container">
+  <h2>Sign-up</h2>
+  <form  #signup="ngForm" (ngSubmit)="onSubmit(signup.value)">
+    <div class="form-group">
+        <label>Fisrtname</label>
+        <input type="text" required #Firstname = "ngModel" class="form-control" name="Firstname" ngModel>
+        <div [hidden]="Firstname.valid || Firstname.pristine" class ="alert alert-danger">
+          Please enter your first name
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Lastname</label>
+        <input type="text" required #Lastname = "ngModel" class="form-control" name="Lastname" [(ngModel)]="lastName">
+        <div [hidden]="Lastname.valid || Lastname.pristine" class ="alert alert-danger">
+            Please enter your Last name
+          </div>
+    </div>
+    <div class="form-group">
+        <label>Mobile</label>
+        <input type="text"pattern="^[1-9][0-9]{9}" #Mobile ="ngModel" class="form-control" name="Mobile" ngModel>
+        <div [hidden]="Mobile.valid || Mobile.pristine" class ="alert alert-danger">
+            Please enter 10 digit mobile number
+          </div>
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input type="text" class="form-control" name="Email" ngModel>
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-control" name="Password" [(ngModel)]="password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form> 
+</div>
+   <div style="margin-top: 5px">
+       <a routerLinkActive="active" [routerLink]="['/signin',{foo:lastName,zoo:password}]">Signin</a>
+   </div>
+        
